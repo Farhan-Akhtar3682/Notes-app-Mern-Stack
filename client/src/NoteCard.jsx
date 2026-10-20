@@ -14,7 +14,7 @@ export default function NoteCard({ note, onEdit, onPin, onDelete }) {
         <div className="actions">
           <button className="link" onClick={onPin}>{note.pinned ? "Unpin" : "Pin"}</button>
           <button className="link" onClick={onEdit}>Edit</button>
-          <button className="link danger" onClick={onDelete}>Delete</button>
+          <button className="link danger" onClick={onDelete}>delete</button>
         </div>
       </footer>
     </article>
