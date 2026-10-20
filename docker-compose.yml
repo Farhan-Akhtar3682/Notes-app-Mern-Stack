@@ -1,0 +1,31 @@
+services:
+  frontend:
+     build: ./client
+     ports:
+      - "80:5173"
+     depends_on: backend
+
+  backend:
+    build: ./server
+    env_file:
+    - ./server/env
+    ports:
+    - "5000:5000"
+    depends_on: mongo
+
+  mongo:
+   image: mongodb:latest
+   ports:
+   - "27017:27017"
+   environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: mypassword
+   volumes:
+      - mongo_data:/data/db
+      
+
+volumes:
+  mongo_data: 
+  
+
+
