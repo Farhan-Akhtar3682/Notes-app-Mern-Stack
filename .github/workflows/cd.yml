@@ -13,7 +13,7 @@ jobs:
         env:
           SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
         run: |
-          echo "$SSH_KEY" > mern.pem
+          printf '%s\n' "$SSH_KEY" > mern.pem
           chmod 600 mern.pem
 
           mkdir -p ~/.ssh
@@ -21,4 +21,4 @@ jobs:
 
           ssh -i mern.pem \
             ubuntu@ec2-3-25-242-52.ap-southeast-2.compute.amazonaws.com \
-            "aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin 693906847517.dkr.ecr.ap-southeast-2.amazonaws.com && cd ~/Notes-app-Mern-Stack && docker compose pull && docker compose up -d"
+            'aws ecr get-login-password --region ap-southeast-2 | sudo docker login --username AWS --password-stdin 693906847517.dkr.ecr.ap-southeast-2.amazonaws.com && cd ~/Notes-app-Mern-Stack && sudo docker compose pull && sudo docker compose up -d'
