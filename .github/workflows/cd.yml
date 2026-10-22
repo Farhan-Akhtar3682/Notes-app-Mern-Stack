@@ -1,3 +1,4 @@
+
 name: Deployment
 
 on:
@@ -14,6 +15,9 @@ jobs:
         run: |
           echo "$SSH_KEY" > mern.pem
           chmod 600 mern.pem
+
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ec2-3-25-242-52.ap-southeast-2.compute.amazonaws.com >> ~/.ssh/known_hosts
 
           ssh -i mern.pem \
             ubuntu@ec2-3-25-242-52.ap-southeast-2.compute.amazonaws.com \
