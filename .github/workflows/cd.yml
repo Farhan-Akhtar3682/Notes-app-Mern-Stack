@@ -21,4 +21,4 @@ jobs:
 
           ssh -i mern.pem \
             ubuntu@ec2-3-25-242-52.ap-southeast-2.compute.amazonaws.com \
-            "cd ~/Notes-app-Mern-Stack && docker compose pull && docker compose up -d"
+            "aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin 693906847517.dkr.ecr.ap-southeast-2.amazonaws.com && cd ~/Notes-app-Mern-Stack && docker compose pull && docker compose up -d"
