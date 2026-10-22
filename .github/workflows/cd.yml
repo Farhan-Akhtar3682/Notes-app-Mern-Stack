@@ -1,10 +1,20 @@
 name: Deployment
+
 on:
   workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Deploy
-        run: echo "Deploying application..."
+      - name: ec2-ssh
+        env:
+          SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
+        run: |
+          echo "$SSH_KEY" > mern.pem
+          chmod 600 mern.pem
+
+          ssh -i mern.pem \
+            ubuntu@ec2-3-25-242-52.ap-southeast-2.compute.amazonaws.com \
+            "cd ~/Notes-app-Mern-Stack && docker compose pull && docker compose up -d"
