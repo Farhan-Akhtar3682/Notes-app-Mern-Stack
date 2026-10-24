@@ -55,7 +55,7 @@ export default function NoteForm({ note, onSave, onCancel }) {
             </button>
           )}
           <button type="button" className="btn" onClick={submit} disabled={!title.trim()}>
-            {note ? "Save changes" : "Add note"}
+            {note ? "Save changes" : "Add a note"}
           </button>
         </div>
       </div>
