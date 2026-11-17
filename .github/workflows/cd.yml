@@ -17,9 +17,9 @@ jobs:
           chmod 600 mern.pem
 
           mkdir -p ~/.ssh
-          ssh-keyscan -H ec2-3-26-67-48.ap-southeast-2.compute.amazonaws.com >> ~/.ssh/known_hosts
+
+          ssh-keyscan -H ec2-16-179-224-236.ap-southeast-2.compute.amazonaws.com >> ~/.ssh/known_hosts
 
           ssh -i mern.pem \
             ubuntu@ec2-16-179-224-236.ap-southeast-2.compute.amazonaws.com \
-            'aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin 693906847517.dkr.ecr.ap-southeast-2.amazonaws.com && cd ~/Notes-app-Mern-Stack && sudo docker compose pull && sudo docker compose up -d'
-
+            'aws ecr get-login-password --region ap-southeast-2 | sudo docker login --username AWS --password-stdin 693906847517.dkr.ecr.ap-southeast-2.amazonaws.com && cd ~/Notes-app-Mern-Stack && sudo docker compose pull && sudo docker compose up -d'
