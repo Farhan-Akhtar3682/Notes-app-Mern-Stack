@@ -18,7 +18,7 @@ jobs:
 
           mkdir -p ~/.ssh
 
-          ssh-keyscan -H ec2-54-253-214-14.ap-southeast-2.compute.amazonaws.com >> ~/.ssh/known_hosts
+          ssh-keyscan -H ec2-54-253-214-147.ap-southeast-2.compute.amazonaws.com >> ~/.ssh/known_hosts
 
           ssh -i mern.pem \
             ubuntu@ec2-54-253-214-147.ap-southeast-2.compute.amazonaws.com \
